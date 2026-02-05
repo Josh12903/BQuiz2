@@ -3,7 +3,7 @@
 session_start();
 
 class DB{
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db0109";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db0206";
     protected $pdo;
     protected $table;
 
@@ -64,7 +64,7 @@ class DB{
         return $this->pdo->exec($sql);
     }
 
-
+// foreach
     function count(...$arg){
         $sql="SELECT count(*) FROM $this->table ";
             if(isset($arg[0])){
@@ -106,7 +106,7 @@ function to($url){
 }
 
 function q($sql){
-    $dsn="mysql:host=localhost;charset=ytf8;dbname=db0109";
+    $dsn="mysql:host=localhost;charset=ytf8;dbname=db0206";
     $pdo-new PDO($dsn,'root','');
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC)
 }

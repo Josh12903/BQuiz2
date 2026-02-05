@@ -2,7 +2,7 @@
 <fieldset>
     <legend>會員註冊</legend>
     <div>*請設定您要註冊的帳號及密碼(最常12個字元)</div>
-<form action="./api.reg.php" method="post">
+<form action="../api/reg.php" method="post">
     <table>
         <tr>
             <td>Step1:登入帳號</td>
