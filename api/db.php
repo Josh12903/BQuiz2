@@ -9,7 +9,7 @@ class DB{
 
     function __construct($table){
         $this->table=$table;
-        $this->pdo=new PDO($this->dsn,'root'.'')
+        $this->pdo=new PDO($this->dsn,'root'.'');
     }
 
     function all(...$arg){
@@ -27,7 +27,7 @@ class DB{
                 $sql .=$arg[1];
             }
 
-        return $this->pdo->query($sql)-
+        return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function find($id){
@@ -45,12 +45,12 @@ class DB{
     function save($array){
        if(isset($array['id'])){
         $set=$this->array2sql($array);
-        $sql="UPDATE $this->table SET ".join(",",$set). "WHERE `id`='{$array['id']}'";
+        $sql="UPDATE $this->table SET ".join(",",$set). " WHERE `id`='{$array['id']}'";
        }else{
             $cols=array_keys($array);
-            $sql="INSERT INTO $this->table (`".join("`,`"$cols)."`) VALUES('".join("','",$array)."')";
+            $sql="INSERT INTO $this->table (`".join("`,`",$cols)."`) VALUES('".join("','",$array)."')";
        }
-
+    //    echo $sql;
        return $this->pdo->exec($sql);
     }   
 
@@ -70,7 +70,7 @@ class DB{
             if(isset($arg[0])){
                 if(is_array($arg[0])){
                     $where=$this->array2sql($arg[0]);
-                    $sql
+                    $sql .= " WHERE ".join(" AND ",$where);
                 }else{
                     $sql .=$arg[0];
                 }
@@ -108,11 +108,22 @@ function to($url){
 function q($sql){
     $dsn="mysql:host=localhost;charset=ytf8;dbname=db0206";
     $pdo-new PDO($dsn,'root','');
-    return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC)
+    return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
 $Total=new DB('total');
+// $Total->save(['date'=>date("ymd"),'total'=>0]);
+// $rows=$Total->all();
+// dd($rows);
+// $row=$Total->find(1);
+// dd($row);
+
+// 觀察資料 與 資料庫入庫的先後順序 再詢問！！！
+// $Total->save(['id'=>1,'date'=>'2026-01-11','total'=>100]);
+// count sum尚未測試
+
+
 $Mem=new DB('member');
 
 

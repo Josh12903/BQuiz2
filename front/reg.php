@@ -33,3 +33,36 @@
     </table>
 </form>
 </fieldset>
+
+<script>
+// 寫註冊 的資料 庫對應
+    function reg(){
+        let user{
+            // js 不能用箭頭
+            'acc':$("#acc").val(),
+            'pw':$("#pw").val(),
+            'pw2':$("#pw2").val(),
+            'email':$("#email").val()
+        }
+                // 寫 || 會不會更不易出錯(為解題) ai只是把簡單解決的答案敷衍給我而已 需要避免(練琴..)
+        if(user.acc !='' && user.pw !='' && user.pw2 !='' && user.email !=''){
+            if(user.pw == user.pw2){
+                $.get("./api/chk_acc.php",{'acc':user.acc},(chk)=>{
+                    if(!parseInt(chk)){
+                        $.post("./api/chk.php",user,(res){
+                            console.log(res)
+                            alert("註冊成功，歡迎加入")
+                        })
+                    }else{
+                        alert("帳號重複")
+
+                    }
+                })
+            }else{
+                alert("密碼錯誤")
+            }
+        }else{
+            alert("不可空白")
+        }
+    }
+</script>
