@@ -9,7 +9,7 @@ class DB{
 
     function __construct($table){
         $this->table=$table;
-        $this->pdo=new PDO($this->dsn,'root'.'');
+        $this->pdo=new PDO($this->dsn,'root','');
     }
 
     function all(...$arg){
@@ -106,7 +106,7 @@ function to($url){
 }
 
 function q($sql){
-    $dsn="mysql:host=localhost;charset=ytf8;dbname=db0206";
+    $dsn="mysql:host=localhost;charset=utf8;dbname=db0206";
     $pdo-new PDO($dsn,'root','');
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }

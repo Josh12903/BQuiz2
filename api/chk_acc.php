@@ -1,3 +1,4 @@
-<?php include_once "db.php";
+<?php 
+include_once "db.php";
 
-echo $Mem->count('acc'=>$_GET['acc']);
+echo $Mem->count(['acc'=>$_GET['acc']]);
