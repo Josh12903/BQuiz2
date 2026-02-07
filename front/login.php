@@ -37,7 +37,7 @@
         // ...其餘程式碼
             if(parseInt(chkacc)){
                 $.get("./api/chk_pw.php",user,(chkpw)=>{
-                    console.log(chkpw)
+                    // console.log(chkpw)
                     if(parseInt(chkpw)){
                         if(user.acc=='admin'){
                             location.href='admin.php';
