@@ -82,6 +82,23 @@ class DB{
             
         return $this->pdo->query($sql)->fetchColumn();
     }
+    function sum($col,...$arg){
+        $sql="SELECT sum(`$col`) FROM $this->table ";
+            if(isset($arg[0])){
+                if(is_array($arg[0])){
+                    $where=$this->array2sql($arg[0]);
+                    $sql .= " WHERE ".join(" AND ",$where);
+                }else{
+                    $sql .=$arg[0];
+                }
+            }
+
+            if(isset($arg[1])){
+                $sql .= $arg[1];
+            }
+            
+        return $this->pdo->query($sql)->fetchColumn();
+    }
 
 
     private function array2sql($array){
@@ -128,6 +145,7 @@ $Mem=new DB('member');
 
 
 if(!isset($_SESSION['total'])){
+    // 今天 他日再改系統日期測試
     $today=$Total->find(['date'=>date("Y-m-d")]);
     if(empty($todat)){
         $Total->save(['date'=>date("Y-m-d"),'total'=>1]);
