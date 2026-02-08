@@ -40,7 +40,7 @@
                     // console.log(chkpw)
                     if(parseInt(chkpw)){
                         if(user.acc=='admin'){
-                            location.href='admin.php';
+                            location.href='back.php';
                         }else{
                             location.href='index.php';
                         }
