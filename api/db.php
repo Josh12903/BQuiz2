@@ -15,7 +15,8 @@ class DB{
     function all(...$arg){
         $sql="SELECT * FROM $this->table ";
             if(isset($arg[0])){
-                if(isset($arg[0])){
+
+                if(is_array($arg[0])){
                     $where=$this->array2sql($arg[0]);
                     $sql .=" WHERE ".join(" AND ",$where);
                 }else{
@@ -60,7 +61,12 @@ class DB{
         if(is_array($id)){
             $where=$this->array2sql($id);
             $sql .= " WHERE ".join(" AND ",$where);
-        }else
+        
+        // }else
+        }else{
+            $sql .= " WHERE `id`='{$id}'";
+        }
+
         return $this->pdo->exec($sql);
     }
 
@@ -124,7 +130,10 @@ function to($url){
 
 function q($sql){
     $dsn="mysql:host=localhost;charset=utf8;dbname=db0206";
-    $pdo-new PDO($dsn,'root','');
+
+    // $pdo-new PDO($dsn,'root','');
+    $pdo=new PDO($dsn,'root','');
+    
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -147,7 +156,10 @@ $Mem=new DB('member');
 if(!isset($_SESSION['total'])){
     // 今天 他日再改系統日期測試
     $today=$Total->find(['date'=>date("Y-m-d")]);
-    if(empty($todat)){
+    
+    // if(empty($todat)){
+    if(empty($today)){
+
         $Total->save(['date'=>date("Y-m-d"),'total'=>1]);
     }else{
         $today['total']=$today['total']+1;
