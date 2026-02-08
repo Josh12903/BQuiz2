@@ -151,6 +151,7 @@ $Total=new DB('total');
 
 
 $Mem=new DB('member');
+$Post=new DB('post');
 
 
 if(!isset($_SESSION['total'])){
