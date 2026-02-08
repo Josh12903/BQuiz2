@@ -39,19 +39,19 @@ endforeach;
     <?php
         if($now-1>0){
             $prev=$now-1;
-            echo "<a href='?do=new&p=$prev'> < </a>";
+            echo "<a href='?do=news&p=$prev'> < </a>";
         }
 
         for($i=1;$i<=$pages;$i++){
             
             $font=($i==$now)?"24px":"16px;";
-            echo "<a href='?do=new&p=$i' style='font-size:$font'> $i </a>";
+            echo "<a href='?do=news&p=$i' style='font-size:$font'> $i </a>";
             
         }
 
         if($now+1<=0){
             $next=$now+1;
-            echo "<a href='?do=new&p=$next'> > </a>";
+            echo "<a href='?do=news&p=$next'> > </a>";
         }
     ?>
 </div>
