@@ -154,6 +154,7 @@ $Mem=new DB('member');
 $Post=new DB('post');
 $Que=new DB('que');
 
+$Log=new DB('log');
 
 
 if(!isset($_SESSION['total'])){
