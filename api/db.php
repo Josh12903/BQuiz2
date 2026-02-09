@@ -18,13 +18,13 @@ class DB{
 
                 if(is_array($arg[0])){
                     $where=$this->array2sql($arg[0]);
-                    $sql .=" WHERE ".join(" AND ",$where);
+                    $sql .= " WHERE ".join(" AND ",$where);
                 }else{
                     $sql .= $arg[0];
                 }
             }
 
-            if(isset($srg[1])){
+            if(isset($arg[1])){
                 $sql .=$arg[1];
             }
 
