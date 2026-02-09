@@ -155,6 +155,7 @@ $Post=new DB('post');
 $Que=new DB('que');
 
 
+
 if(!isset($_SESSION['total'])){
     // 今天 他日再改系統日期測試
     $today=$Total->find(['date'=>date("Y-m-d")]);
