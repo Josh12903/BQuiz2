@@ -9,13 +9,29 @@
 
     <title>健康促進網</title>
     <link href="./css/css.css" rel="stylesheet" type="text/css">
+    <style>
+        #alerr{
+            background: rgba(51, 51, 51, 0.8);
+            color: #FFF;
+            min-height:200px;
+            max-height:300px;
+            width: 350px;
+            position: fixed;
+            display:none;
+            z-index:9999;
+            overflow:auto;
+            left:530px;
+            top:350px;
+            padding:10px;
+        }
+    </style>
     <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/js.js"></script>
 </head>
 
 <body>
     <div id="alerr"
-        style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
+        style="">
         <pre id="ssaa"></pre>
     </div>
     <iframe name="back" style="display:none;"></iframe>

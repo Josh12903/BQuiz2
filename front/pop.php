@@ -25,10 +25,15 @@
                 <?=mb_substr($post['text'],0,25);?>...
             </span>
             <span class="full" style="display:none">
-                <?=nl2br($post['text']);?>
+                <?php
+                     
+                echo "<h3 style='color:skyblue'>".$Post->type[$post['type']]."</h3>";
+                echo nl2br($post['text']);
+                ?>
             </span>
         </td>
         <td>
+            <!-- 資料表 底線 別打錯 -->
             <?php
                 if(isset($_SESSION['login'])){
                         $post_id=$post['id'];
@@ -71,27 +76,42 @@
 </div>
 </fieldset>
 
-
+<!-- 分類 各檔 -->
 <script>
-    $(".title").on("click",function(){
-        $(this).next().children('.short,.full').toggle();
-    })
+    
+    $(".title").hover(
+        function(){
+            $("#alerr").html($(this).next().children('.full').html()).show()
+        },
 
-    $(".great").on("click",function()=>{
-        let id=$(this).data('id')
-        let str=$(this).text('id')
-
-        $.post("./api/good.php",{id},()=>{
-            switch(str){
-            case "讚":
-                $(this).text("收回讚")
-            break;
-            case "收回讚":
-                $(this).text("讚")
-            break;
+        function(){
+            $("#alerr").hide();
         }
+    )
+    $(".post").hover(
+        function(){
+            $("#alerr").html($(this).children('.full').html()).show()
+        },
 
-        })
+        function(){
+            $("#alerr").hide()
+        }
+    )
+
+    $(".great").on("click",function(){
+    let id=$(this).data('id')
+    let str=$(this).text()
+
+    $.post("./api/good.php",{id},()=>{
+        switch(str){
+        case "讚":
+            $(this).text("收回讚")
+        break;
+        case "收回讚":
+            $(this).text("讚")
+        break;
+    }
+
     })
-
+})
 </script>

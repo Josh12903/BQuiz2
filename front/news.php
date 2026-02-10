@@ -72,10 +72,10 @@
         $(this).next().children('.short,.full').toggle();
     })
 
-    $(".great").on("click",function()=>{
+    $(".great").on("click",function(){
         let id=$(this).data('id')
-        let str=$(this).text('id')
-
+        let str=$(this).text();
+    
         $.post("./api/good.php",{id},()=>{
             switch(str){
             case "讚":
@@ -85,10 +85,9 @@
                 $(this).text("讚")
             break;
         }
-
+    
         })
     })
-
 </script>
 
 <!-- javascript:good({$post['id']},this) -->
@@ -96,7 +95,10 @@
 
 <!-- function good(post,dom){
     console.log(post,$(dom).text())
-     $.post("./api/good.php",{post},()=>{
-
+    $.post("./api/good.php",{post},()=>{
+        
     }) 
-} -->
+    } -->
+    
+    
+    
